@@ -4,7 +4,7 @@ A tool that you can use to find what folders your songs are in without having to
 ## Prerequisites
 Only works on Windows.
 
-Requires .NET 6.0 which can be downloaded here: [.NET 6.0 Runtime Installer Download]([https://www.google.com](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.5-windows-x64-installer))
+Requires .NET 6.0 which can be downloaded here: [.NET 6.0 Runtime Installer Download](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.5-windows-x64-installer)
 
 ### Automatically detects custom song path if you have beat saber installed with steam
 ![image](https://user-images.githubusercontent.com/12065481/169604060-0bbd4b2a-8b3e-4b55-a5df-e6d1ed7f868b.png)
