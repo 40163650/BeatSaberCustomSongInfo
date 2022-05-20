@@ -1,0 +1,2 @@
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\publish\win-x64\SongAnalyser.pdb
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\publish\win-x64\SongAnalyser.exe
