@@ -58,13 +58,13 @@ namespace SongAnalyser
         List<List<string>> resultsCopy = new();
         List<List<string>> filteredList = new();
 
-        DateTime lastUpdateTime = DateTime.MinValue;
-
         Font itemFont;
 
         public Results()
         {
             InitializeComponent();
+
+            SetupColumns();
 
             itemFont = new(lvResults.Font, FontStyle.Regular);
 
@@ -82,6 +82,14 @@ namespace SongAnalyser
             lvResults.Columns.Add("Artist", -2, HorizontalAlignment.Left);
             lvResults.Columns.Add("Mapper", -2, HorizontalAlignment.Left);
             lvResults.Columns.Add("Folder Name", -2, HorizontalAlignment.Left);
+
+            lvResults.View = View.Details;
+            lvResults.LabelEdit = false;
+            lvResults.AllowColumnReorder = false;
+            lvResults.CheckBoxes = false;
+            lvResults.FullRowSelect = true;
+            lvResults.GridLines = true;
+            lvResults.Sorting = SortOrder.Ascending;
         }
 
         public void ResizeListView(object sender, EventArgs e)
@@ -91,22 +99,11 @@ namespace SongAnalyser
             {
                 lvResults.AutoResizeColumn(i, ColumnHeaderAutoResizeStyle.ColumnContent);
             }
-
-            Results_Resize(sender, e);
         }
 
         private void Results_Load(object sender, EventArgs e)
         {
-            SetupColumns();
             resultsCopy.Clear();
-
-            lvResults.View = View.Details;
-            lvResults.LabelEdit = false;
-            lvResults.AllowColumnReorder = false;
-            lvResults.CheckBoxes = false;
-            lvResults.FullRowSelect = true;
-            lvResults.GridLines = true;
-            lvResults.Sorting = SortOrder.Ascending;
 
             string path = Form1.path;
 
@@ -124,19 +121,19 @@ namespace SongAnalyser
 
                 string text = File.ReadAllText(datfile);
 
-                Song? song = JsonConvert.DeserializeObject<Song>(text);
+                Song song = JsonConvert.DeserializeObject<Song>(text);
 
-                ListViewItem lvItem = new(song?._songName);
+                ListViewItem lvItem = new(song._songName);
                // lvItem.SubItems.Add(song?._songSubName);
-                lvItem.SubItems.Add(song?._songAuthorName);
-                lvItem.SubItems.Add(song?._levelAuthorName);
+                lvItem.SubItems.Add(song._songAuthorName);
+                lvItem.SubItems.Add(song._levelAuthorName);
                 lvItem.SubItems.Add(Path.GetFileName(folder));
 
                 lvItem.Font = itemFont;
 
                 lvResults.Items.Add(lvItem);
 
-                List<string> strings = new List<string> { song?._songName, song?._songAuthorName, song?._levelAuthorName, Path.GetFileName(folder) };
+                List<string> strings = new List<string> { song._songName, song._songAuthorName, song._levelAuthorName, Path.GetFileName(folder) };
                 resultsCopy.Add(strings);
             }
 
@@ -165,7 +162,7 @@ namespace SongAnalyser
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            lvResults.Clear();
+            lvResults.Items.Clear();
             Results_Load(sender, e);
         }
 
