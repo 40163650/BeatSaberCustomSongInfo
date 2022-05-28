@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace SongAnalyser
@@ -56,10 +56,17 @@ namespace SongAnalyser
     public partial class Results : Form
     {
         List<List<string>> resultsCopy = new();
+        List<List<string>> filteredList = new();
+
+        DateTime lastUpdateTime = DateTime.MinValue;
+
+        Font itemFont;
 
         public Results()
         {
             InitializeComponent();
+
+            itemFont = new(lvResults.Font, FontStyle.Regular);
 
             FormClosing += Results_FormClosing;
             Resize += Results_Resize;
@@ -92,8 +99,6 @@ namespace SongAnalyser
         {
             SetupColumns();
             resultsCopy.Clear();
-
-            Font itemFont = new(lvResults.Font, FontStyle.Regular);
 
             lvResults.View = View.Details;
             lvResults.LabelEdit = false;
@@ -180,41 +185,24 @@ namespace SongAnalyser
             Process.Start("explorer.exe", combined); // This is very particular about the right slashes
         }
 
-        // TODO: Optimise
         private void tbFilter_TextChanged(object sender, EventArgs e)
         {
-            List<List<string>> filteredList = new List<List<string>>(resultsCopy);
+            filteredList = resultsCopy.Where(item => item.Any(s => s.Contains(tbFilter.Text, StringComparison.CurrentCultureIgnoreCase))).ToList();
 
-            for(int i = filteredList.Count - 1; i >= 0; i--)
+            SuspendLayout();
+
+            lvResults.Items.Clear();
+
+            Func<List<string>, ListViewItem> makeListViewItem = x =>
             {
-                var strings = filteredList[i];
-                if( !strings[0].Contains(tbFilter.Text) &&
-                    !strings[1].Contains(tbFilter.Text) &&
-                    !strings[2].Contains(tbFilter.Text) &&
-                    !strings[3].Contains(tbFilter.Text))
-                {
-                    filteredList.Remove(strings);
-                }
-            }
+                return new ListViewItem { Text = x[0], SubItems = { x[1], x[2], x[3] }, Font = itemFont };
+            };
 
-            lvResults.Clear();
-
-            SetupColumns();
-
-            Font itemFont = new(lvResults.Font, FontStyle.Regular);
-
-            foreach (List<string> strings in filteredList)
-            {
-                ListViewItem lvItem = new(strings[0]);
-                lvItem.SubItems.Add(strings[1]);
-                lvItem.SubItems.Add(strings[2]);
-                lvItem.SubItems.Add(strings[3]);
-                lvItem.Font = itemFont;
-
-                lvResults.Items.Add(lvItem);
-            }
+            lvResults.Items.AddRange(filteredList.Select(i => makeListViewItem(i)).ToArray());
 
             ResizeListView(sender, e);
+
+            ResumeLayout();
         }
     }
 }
