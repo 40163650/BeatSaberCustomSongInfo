@@ -94,7 +94,6 @@ namespace SongAnalyser
 
         public void ResizeListView(object sender, EventArgs e)
         {
-            lvResults.Sort();
             for (int i = 0; i < lvResults.Columns.Count; i++)
             {
                 lvResults.AutoResizeColumn(i, ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -179,7 +178,7 @@ namespace SongAnalyser
             combined = combined.Replace(@"\\", @"\"); // Again
             combined = combined.Replace(@"/", @"\");
 
-            Process.Start("explorer.exe", combined); // This is very particular about the right slashes
+            Process.Start("explorer.exe", "\"" + combined + "\""); // This is very particular about the right slashes
         }
 
         private void tbFilter_TextChanged(object sender, EventArgs e)
