@@ -268,7 +268,9 @@ namespace SongAnalyser
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
+            btnPlay.Text = "Play Selected";
             waveOut.Stop();
+            playing = false;
             MyParentForm.ExistingResults = this;
             MyParentForm.Show();
             this.Hide();
