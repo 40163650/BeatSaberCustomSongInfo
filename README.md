@@ -23,3 +23,10 @@ If you want to do something basic, like add the BPM to the list, I would recomme
 As for bugs, if you find any, let me know, I'll fix crashes and major issues, but stuff like UI getting squashed when the window is small, I won't fix.
 
 Enjoy.
+
+### New functionality
+Links: A link to the song is displayed in the rightmost column if it looks like the folder contains the song id. NB: It can get it wrong sometimes. Right clicking anywhere on the song entry (name, artist, mapper, link, etc.) will copy that link to the clipboard and show a message letting you know. The message automatically closes itself.
+
+Back button: Self-explanatory
+
+Play button: Plays the currently selected song. Songs can be stopped or started, they cannot be paused. They always start from the start. Songs will automatically be stopped if you press the back button. They will also stop when you press the button again. You cannot play more than one song at once. You must stop the current one then start the next one. Songs are played at 33% volume based on the assumption that they are made loud for the game. Songs will automatically stop when they finish; obviously.
