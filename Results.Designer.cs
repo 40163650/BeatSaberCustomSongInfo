@@ -42,13 +42,13 @@
             // 
             this.lvResults.Location = new System.Drawing.Point(25, 41);
             this.lvResults.Name = "lvResults";
-            this.lvResults.Size = new System.Drawing.Size(1194, 758);
+            this.lvResults.Size = new System.Drawing.Size(1207, 766);
             this.lvResults.TabIndex = 0;
             this.lvResults.UseCompatibleStateImageBehavior = false;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(25, 812);
+            this.btnRefresh.Location = new System.Drawing.Point(25, 815);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.tbFilter.Location = new System.Drawing.Point(67, 12);
             this.tbFilter.Name = "tbFilter";
-            this.tbFilter.Size = new System.Drawing.Size(1152, 23);
+            this.tbFilter.Size = new System.Drawing.Size(1165, 23);
             this.tbFilter.TabIndex = 2;
             this.tbFilter.TextChanged += new System.EventHandler(this.tbFilter_TextChanged);
             // 
@@ -75,7 +75,7 @@
             // 
             // btOpen
             // 
-            this.btOpen.Location = new System.Drawing.Point(106, 812);
+            this.btOpen.Location = new System.Drawing.Point(106, 815);
             this.btOpen.Name = "btOpen";
             this.btOpen.Size = new System.Drawing.Size(104, 23);
             this.btOpen.TabIndex = 4;
@@ -85,7 +85,7 @@
             // 
             // btn_Back
             // 
-            this.btn_Back.Location = new System.Drawing.Point(324, 812);
+            this.btn_Back.Location = new System.Drawing.Point(324, 815);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(75, 23);
             this.btn_Back.TabIndex = 5;
@@ -96,7 +96,7 @@
             // lbTracks
             // 
             this.lbTracks.AutoSize = true;
-            this.lbTracks.Location = new System.Drawing.Point(405, 816);
+            this.lbTracks.Location = new System.Drawing.Point(405, 819);
             this.lbTracks.Name = "lbTracks";
             this.lbTracks.Size = new System.Drawing.Size(39, 15);
             this.lbTracks.TabIndex = 6;
@@ -104,7 +104,7 @@
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(216, 812);
+            this.btnPlay.Location = new System.Drawing.Point(216, 815);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(102, 23);
             this.btnPlay.TabIndex = 7;

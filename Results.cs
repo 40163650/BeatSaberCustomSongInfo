@@ -200,11 +200,11 @@ namespace SongAnalyser
 
         // Called twice when resizing both width and height
         // Even occurs for file explorer, I wouldn't worry about it
-        Point buttonRefreshLoc = new(25, 804); // Allocate once
-        Point buttonOpenLoc = new(106, 804);
-        Point buttonPlayLoc = new(216, 804);
-        Point buttonBackLoc = new(324, 804);
-        Point labelTracksLoc = new(405, 808);
+        Point buttonRefreshLoc = new(25,  815); // Allocate once
+        Point buttonOpenLoc    = new(106, 815);
+        Point buttonPlayLoc    = new(216, 815);
+        Point buttonBackLoc    = new(324, 815);
+        Point labelTracksLoc   = new(405, 819);
         private void Results_Resize(object sender, EventArgs e)
         {
             lvResults.Width = Width - 75;
