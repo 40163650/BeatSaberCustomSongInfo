@@ -18,3 +18,12 @@ C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser
 C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\obj\Release\net6.0-windows\SongAnalyser.pdb
 C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\obj\Release\net6.0-windows\SongAnalyser.genruntimeconfig.cache
 C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\obj\Release\net6.0-windows\ref\SongAnalyser.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NVorbis.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.Asio.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.Core.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.Midi.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.Vorbis.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.Wasapi.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.WinForms.dll
+C:\Users\matth\Documents\Visual Studio 2022\Projects\BSSongAnalyser\SongAnalyser\bin\Release\net6.0-windows\NAudio.WinMM.dll

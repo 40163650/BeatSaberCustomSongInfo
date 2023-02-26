@@ -4,11 +4,13 @@ namespace SongAnalyser
 {
     public partial class Form1 : Form
     {
+        public Results ExistingResults;
         public static string path = "";
         public Form1()
         {
             InitializeComponent();
         }
+
 
         private void btnAnalyse_Click(object sender, EventArgs e)
         {
@@ -16,9 +18,18 @@ namespace SongAnalyser
 
             if(Directory.Exists(path))
             {
-                Results results = new();
-                results.Show();
-                Hide();
+                if(ExistingResults == null)
+                {
+                    Results results = new(this);
+                    results.Show();
+                    Hide();
+                }
+                else
+                {
+                    ExistingResults.Show();
+                    Hide();
+                    ExistingResults.btnRefresh_Click(null, null);
+                }
             }
             else
             {
@@ -74,6 +85,14 @@ namespace SongAnalyser
             }
 
             tbPath.Text = path;
+        }
+
+        private void tbPath_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                btnAnalyse_Click(sender, e);
+            }
         }
     }
 }

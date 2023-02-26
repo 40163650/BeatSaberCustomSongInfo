@@ -49,6 +49,7 @@
             this.tbPath.Name = "tbPath";
             this.tbPath.Size = new System.Drawing.Size(525, 23);
             this.tbPath.TabIndex = 1;
+            this.tbPath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPath_KeyDown);
             // 
             // label1
             // 

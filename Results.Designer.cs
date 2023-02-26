@@ -33,6 +33,9 @@
             this.tbFilter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btOpen = new System.Windows.Forms.Button();
+            this.btn_Back = new System.Windows.Forms.Button();
+            this.lbTracks = new System.Windows.Forms.Label();
+            this.btnPlay = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvResults
@@ -80,11 +83,43 @@
             this.btOpen.UseVisualStyleBackColor = true;
             this.btOpen.Click += new System.EventHandler(this.btOpen_Click);
             // 
+            // btn_Back
+            // 
+            this.btn_Back.Location = new System.Drawing.Point(324, 812);
+            this.btn_Back.Name = "btn_Back";
+            this.btn_Back.Size = new System.Drawing.Size(75, 23);
+            this.btn_Back.TabIndex = 5;
+            this.btn_Back.Text = "Back";
+            this.btn_Back.UseVisualStyleBackColor = true;
+            this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
+            // 
+            // lbTracks
+            // 
+            this.lbTracks.AutoSize = true;
+            this.lbTracks.Location = new System.Drawing.Point(405, 816);
+            this.lbTracks.Name = "lbTracks";
+            this.lbTracks.Size = new System.Drawing.Size(39, 15);
+            this.lbTracks.TabIndex = 6;
+            this.lbTracks.Text = "Tracks";
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Location = new System.Drawing.Point(216, 812);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(102, 23);
+            this.btnPlay.TabIndex = 7;
+            this.btnPlay.Text = "Play Selected";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            // 
             // Results
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1266, 847);
+            this.Controls.Add(this.btnPlay);
+            this.Controls.Add(this.lbTracks);
+            this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.btOpen);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbFilter);
@@ -106,5 +141,8 @@
         private TextBox tbFilter;
         private Label label1;
         private Button btOpen;
+        private Button btn_Back;
+        private Label lbTracks;
+        private Button btnPlay;
     }
 }
