@@ -22,14 +22,13 @@ namespace SongAnalyser
                 {
                     Results results = new(this);
                     results.Show();
-                    Hide();
                 }
                 else
                 {
                     ExistingResults.Show();
-                    Hide();
                     ExistingResults.btnRefresh_Click(null, null);
                 }
+                Hide();
             }
             else
             {

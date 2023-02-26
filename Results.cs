@@ -268,7 +268,10 @@ namespace SongAnalyser
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            waveOut.Stop();
+            if(waveOut != null)
+            {
+                waveOut.Stop();
+            }
             MyParentForm.ExistingResults = this;
             MyParentForm.Show();
             this.Hide();
