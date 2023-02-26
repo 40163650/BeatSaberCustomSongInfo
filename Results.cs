@@ -295,6 +295,11 @@ namespace SongAnalyser
             btnPlay.Text = "Stop";
 
             string path = Form1.path;
+
+            if (lvResults.SelectedItems.Count == 0)
+            {
+                return;
+            }
             string dir = lvResults.SelectedItems[0].SubItems[3].Text;
             dir = Path.Combine(path, dir).Replace(@"\\", @"\");
             dir = dir.Replace(@"\\", @"\"); // Again
