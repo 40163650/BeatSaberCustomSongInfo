@@ -292,14 +292,12 @@ namespace SongAnalyser
                 return;
             }
 
-            btnPlay.Text = "Stop";
-
-            string path = Form1.path;
-
             if (lvResults.SelectedItems.Count == 0)
             {
                 return;
             }
+
+            string path = Form1.path;
             string dir = lvResults.SelectedItems[0].SubItems[3].Text;
             dir = Path.Combine(path, dir).Replace(@"\\", @"\");
             dir = dir.Replace(@"\\", @"\"); // Again
@@ -322,6 +320,7 @@ namespace SongAnalyser
                     waveOut.Play();
                     waveOut.PlaybackStopped += OnPlaybackStopped;
                     playing = true;
+                    btnPlay.Text = "Stop";
                     break; // Do not do this more than once
                 }
             }
