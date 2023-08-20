@@ -1,12 +1,9 @@
 using Newtonsoft.Json;
 using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-using NVorbis;
 using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
 using NAudio.Vorbis;
 
 namespace SongAnalyser
@@ -80,19 +77,44 @@ namespace SongAnalyser
 
         Form1 MyParentForm;
 
+        // Not sure how I feel about this more efficient resizing
+        bool currentlyResizing = false;
+        private const int WM_ENTERSIZEMOVE = 0x0231;
+        private const int WM_EXITSIZEMOVE = 0x0232;
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case WM_ENTERSIZEMOVE:
+                    currentlyResizing = true;
+                    break;
+
+                case WM_EXITSIZEMOVE:
+                    currentlyResizing = false;
+                    Results_Resize(null, null);
+                    break;
+            }
+            base.WndProc(ref m);
+        }
+
+
         private void lv_Click(object sender, MouseEventArgs e)
         {
-            if(lvResults == null || lvResults.SelectedItems == null || lvResults.SelectedItems[0] == null || e == null)
+            if (lvResults == null || lvResults.SelectedItems == null || lvResults.SelectedItems[0] == null || e == null)
             {
                 return;
             }
 
             if (e.Button == MouseButtons.Right)
             {
-                Clipboard.SetText(lvResults.SelectedItems[0].SubItems[4].Text);
+                string text =                 lvResults.SelectedItems[0].SubItems[0].Text + "\n" +
+                              "Song By: "   + lvResults.SelectedItems[0].SubItems[1].Text + "\n" +
+                              "Map By: "    + lvResults.SelectedItems[0].SubItems[2].Text + "\n" +
+                              "Map Link: "  + lvResults.SelectedItems[0].SubItems[4].Text;
+                Clipboard.SetText(text);
                 // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-messagebox
                 uint uiFlags = 0x00000000 | 0x00040000 | 0x00001000 | 0x00000040;
-                MessageBoxTimeout(GetForegroundWindow(), $"Link Copied", $"", uiFlags, 0, 400);
+                MessageBoxTimeout(GetForegroundWindow(), $"Data Copied", $"", uiFlags, 0, 400);
             }
         }
 
@@ -122,7 +144,7 @@ namespace SongAnalyser
             lvResults.Columns.Add("Artist", -2, HorizontalAlignment.Left);
             lvResults.Columns.Add("Mapper", -2, HorizontalAlignment.Left);
             lvResults.Columns.Add("Folder Name", -2, HorizontalAlignment.Left);
-            lvResults.Columns.Add("Link (Right Click Entry to Copy)", -2, HorizontalAlignment.Left);
+            lvResults.Columns.Add("Link", -2, HorizontalAlignment.Left);
 
             lvResults.View = View.Details;
             lvResults.LabelEdit = false;
@@ -148,15 +170,20 @@ namespace SongAnalyser
 
             string path = Form1.path;
 
-            foreach(string folder in Directory.GetDirectories(path))
+            if (!Directory.Exists(path))
+            {
+                return;
+            }
+
+            foreach (string folder in Directory.GetDirectories(path))
             {
                 string datfile = folder + "/info.dat";
-                if(!File.Exists(datfile))
+                if (!File.Exists(datfile))
                 {
                     datfile = folder + "/Info.dat";
                     if (!File.Exists(datfile))
                     {
-                        break;
+                        continue;
                     }
                 }
 
@@ -173,10 +200,19 @@ namespace SongAnalyser
                     link = "https://beatsaver.com/maps/" + rx.Match(shortFolder);
                 }
 
+                // 273e5 (Bury The Light - Chained.Trap)
+                int hyphenIndex = shortFolder.IndexOf("-") + 2;
+                int bracketIndex = shortFolder.IndexOf(")");
+                string mapperAlt = "";
+                if (bracketIndex != -1 && hyphenIndex != -1)
+                {
+                    mapperAlt = " (" + shortFolder.Substring(hyphenIndex, bracketIndex - hyphenIndex) + ")";
+                }
+
                 ListViewItem lvItem = new(song._songName);
-               // lvItem.SubItems.Add(song?._songSubName);
+                // lvItem.SubItems.Add(song?._songSubName);
                 lvItem.SubItems.Add(song._songAuthorName);
-                lvItem.SubItems.Add(song._levelAuthorName);
+                lvItem.SubItems.Add(song._levelAuthorName + mapperAlt);
                 lvItem.SubItems.Add(shortFolder);
                 lvItem.SubItems.Add(link);
 
@@ -200,13 +236,14 @@ namespace SongAnalyser
 
         // Called twice when resizing both width and height
         // Even occurs for file explorer, I wouldn't worry about it
-        Point buttonRefreshLoc = new(25,  815); // Allocate once
-        Point buttonOpenLoc    = new(106, 815);
-        Point buttonPlayLoc    = new(216, 815);
-        Point buttonBackLoc    = new(324, 815);
-        Point labelTracksLoc   = new(405, 819);
+        Point buttonRefreshLoc = new(25, 815); // Allocate once
+        Point buttonOpenLoc = new(106, 815);
+        Point buttonPlayLoc = new(216, 815);
+        Point buttonBackLoc = new(324, 815);
+        Point labelTracksLoc = new(405, 819);
         private void Results_Resize(object sender, EventArgs e)
         {
+            if (currentlyResizing) return;
             lvResults.Width = Width - 75;
             tbFilter.Width = lvResults.Width - 42;
             lvResults.Height = Height - 120;
@@ -233,8 +270,8 @@ namespace SongAnalyser
         private void btOpen_Click(object sender, EventArgs e)
         {
             string path = Form1.path;
-            string folder = ""; 
-            if(lvResults.SelectedItems.Count > 0)
+            string folder = "";
+            if (lvResults.SelectedItems.Count > 0)
             {
                 folder = lvResults.SelectedItems[0].SubItems[3].Text;
             }
@@ -268,7 +305,7 @@ namespace SongAnalyser
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
-            if(waveOut != null)
+            if (waveOut != null)
             {
                 waveOut.Stop();
             }
@@ -287,7 +324,7 @@ namespace SongAnalyser
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            if(playing)
+            if (playing)
             {
                 waveOut.Stop();
                 return;
@@ -308,16 +345,16 @@ namespace SongAnalyser
                 return;
             }
             List<string> fileList = Directory.GetFiles(dir).ToList();
-            
+
             // No need for complicated regex, this will be small
-            foreach(string file in fileList)
+            foreach (string file in fileList)
             {
-                if(file.EndsWith("ogg") || file.EndsWith("egg"))
+                if (file.EndsWith("ogg") || file.EndsWith("egg"))
                 {
                     waveReader = new VorbisWaveReader(file);
                     waveOut = new WaveOut();
                     waveOut.Init(waveReader);
-                    waveOut.Volume = 0.33f; // Actually sets the volume of the application
+                    waveOut.Volume = 0.25f; // Actually sets the volume of the application
                     waveOut.Play();
                     waveOut.PlaybackStopped += OnPlaybackStopped;
                     playing = true;

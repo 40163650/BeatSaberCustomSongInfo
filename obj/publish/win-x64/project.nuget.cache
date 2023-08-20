@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fVwQFzsMchYgcz8HYGPUK361/mBqVQJOtl9EjjLGSCtb8Xy+hw5gbnOSkDQy8FfmBBkGkHiZzydnS7LxR5I5gQ==",
+  "dgSpecHash": "7hUsAYIoIkVtkYptRb5+fN6h7F+dctxZZPo66l+wQxnS8pl9nrcWxCEUa20qeAaaz6u8dw2B1sZKA7cgIh/T7g==",
   "success": true,
   "projectFilePath": "C:\\Users\\matth\\Documents\\Visual Studio 2022\\Projects\\BSSongAnalyser\\SongAnalyser\\SongAnalyser.csproj",
   "expectedPackageFiles": [
@@ -20,10 +20,10 @@
     "C:\\Users\\matth\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\matth\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
-    "C:\\Users\\matth\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.10\\microsoft.netcore.app.runtime.win-x64.6.0.10.nupkg.sha512",
-    "C:\\Users\\matth\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.10\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.10.nupkg.sha512",
-    "C:\\Users\\matth\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.10\\microsoft.aspnetcore.app.runtime.win-x64.6.0.10.nupkg.sha512",
-    "C:\\Users\\matth\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.10\\microsoft.netcore.app.crossgen2.win-x64.6.0.10.nupkg.sha512"
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.20\\microsoft.netcore.app.runtime.win-x64.6.0.20.nupkg.sha512",
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.20\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.20.nupkg.sha512",
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.20\\microsoft.aspnetcore.app.runtime.win-x64.6.0.20.nupkg.sha512",
+    "C:\\Users\\matth\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.20\\microsoft.netcore.app.crossgen2.win-x64.6.0.20.nupkg.sha512"
   ],
   "logs": []
 }
