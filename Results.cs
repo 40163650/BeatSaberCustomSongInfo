@@ -201,11 +201,12 @@ namespace SongAnalyser
                 }
 
                 // 273e5 (Bury The Light - Chained.Trap)
-                int hyphenIndex = shortFolder.IndexOf("-") + 2;
+                int hyphenIndex = shortFolder.LastIndexOf("-") + 2;
                 int bracketIndex = shortFolder.IndexOf(")");
                 string mapperAlt = "";
-                if (bracketIndex != -1 && hyphenIndex != -1)
+                if (bracketIndex > 0 && hyphenIndex < bracketIndex)
                 {
+                    Console.WriteLine("BI: " + bracketIndex + " HI: " +  hyphenIndex);
                     mapperAlt = " (" + shortFolder.Substring(hyphenIndex, bracketIndex - hyphenIndex) + ")";
                 }
 
